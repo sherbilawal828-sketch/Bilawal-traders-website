@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/bilawal_traders_solar_agricultural_solutions.html"
+    }
+  ]
+}
