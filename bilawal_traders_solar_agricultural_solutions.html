@@ -779,7 +779,7 @@
 <!-- Right Column: Interactive Consultation Form -->
 <div class="lg:col-span-7">
 <div class="p-space-xl rounded-2xl bg-surface-container-lowest shadow-md">
-<form class="flex flex-col gap-space-md" id="lead-form" onsubmit="event.preventDefault(); document.getElementById('form-success-msg').classList.remove('hidden');">
+<form class="flex flex-col gap-space-md" id="lead-form" onsubmit="sendQuoteToWhatsApp(event)">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
 <!-- Full Name -->
 <div class="flex flex-col gap-space-2xs">
@@ -865,6 +865,32 @@
 </a>
 </body>
         <script>
+                function sendQuoteToWhatsApp(event) {
+  event.preventDefault();
+
+  const form = document.getElementById("lead-form");
+  const fields = form.querySelectorAll("input, select, textarea");
+
+  const name = fields[0]?.value || "";
+  const phone = fields[1]?.value || "";
+  const city = fields[2]?.value || "";
+  const branch = fields[3]?.value || "";
+  const product = fields[4]?.value || "";
+  const details = fields[5]?.value || "";
+
+  const message = `*NEW QUOTE REQUEST - BILAWAL TRADERS*
+
+Name: ${name}
+Phone: ${phone}
+City / District: ${city}
+Preferred Branch & Manager: ${branch}
+Product / Solution: ${product}
+Project Details: ${details}`;
+
+  const url = "https://wa.me/923374402188?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+                }
 function copyText(text) {
   navigator.clipboard.writeText(text).then(function() {
     alert("Copied: " + text);
