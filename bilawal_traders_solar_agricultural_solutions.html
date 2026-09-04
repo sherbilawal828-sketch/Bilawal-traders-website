@@ -823,4 +823,33 @@
 
 </a>
 </body>
+        <script>
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    alert("Copied: " + text);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("span").forEach(function(span) {
+    if (span.textContent.trim() === "Available during business hours") {
+      span.textContent = "0337 4402188";
+      span.style.cursor = "pointer";
+      span.onclick = function() {
+        copyText("03374402188");
+      };
+      span.title = "Click to copy";
+    }
+
+    if (span.textContent.trim() === "Official Quotation Desk") {
+      span.textContent = "bilawalsher8585@gmail.com";
+      span.style.cursor = "pointer";
+      span.onclick = function() {
+        copyText("bilawalsher8585@gmail.com");
+      };
+      span.title = "Click to copy";
+    }
+  });
+});
+        </script>
 </html></body></html>
