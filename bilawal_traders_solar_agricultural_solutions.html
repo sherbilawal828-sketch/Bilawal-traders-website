@@ -881,12 +881,12 @@ function sendQuoteToWhatsApp(event) {
 
     const fields = form.querySelectorAll("input, select, textarea");
 
-    const name = fields[0] ? fields[0].value : "";
-    const phone = fields[1] ? fields[1].value : "";
-    const city = fields[2] ? fields[2].value : "";
-    const branch = fields[3] ? fields[3].value : "";
-    const product = fields[4] ? fields[4].value : "";
-    const details = fields[5] ? fields[5].value : "";
+    const name = fields[0]?.value || "";
+    const phone = fields[1]?.value || "";
+    const city = fields[2]?.value || "";
+    const branch = fields[3]?.value || "";
+    const product = fields[4]?.value || "";
+    const details = fields[5]?.value || "";
 
     const message =
 `*NEW QUOTE REQUEST - BILAWAL TRADERS*
@@ -910,22 +910,35 @@ function copyText(text) {
         alert("Copied: " + text);
     });
 }
-</script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll("span").forEach(function(span) {
-    if (span.textContent.trim() === "Available during business hours") {
-      span.textContent = "0337 4402188";
-      span.style.cursor = "pointer";
-      span.onclick = function() {
-        copyText("03374402188");
-      };
-      span.title = "Click to copy";
-    }
 
-    if (span.textContent.trim() === "Official Quotation Desk") {
-      span.textContent = "bilawalsher8585@gmail.com";
-      span.style.cursor = "pointer";
-      span.onclick = function() {
-        copyText("bilawalsher8585@gmail.com");
-      });
-    }
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll("span").forEach(function(span) {
+
+        if (span.textContent.trim() === "Available during business hours") {
+            span.textContent = "0337 4402188";
+            span.style.cursor = "pointer";
+            span.style.color = "#00695c";
+
+            span.onclick = function() {
+                copyText("03374402188");
+            };
+        }
+
+        if (span.textContent.trim() === "Official Quotation Desk") {
+            span.textContent = "bilawalsher8585@gmail.com";
+            span.style.cursor = "pointer";
+            span.style.color = "#00695c";
+
+            span.onclick = function() {
+                copyText("bilawalsher8585@gmail.com");
+            };
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>
