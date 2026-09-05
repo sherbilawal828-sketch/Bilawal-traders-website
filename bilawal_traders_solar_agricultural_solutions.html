@@ -868,21 +868,28 @@
   </span>
 
 </a>
-        <script>
-                function sendQuoteToWhatsApp(event) {
-  event.preventDefault();
+<script>
+function sendQuoteToWhatsApp(event) {
+    event.preventDefault();
 
-  const form = document.getElementById("lead-form");
-  const fields = form.querySelectorAll("input, select, textarea");
+    const form = document.getElementById("lead-form");
 
-  const name = fields[0]?.value || "";
-  const phone = fields[1]?.value || "";
-  const city = fields[2]?.value || "";
-  const branch = fields[3]?.value || "";
-  const product = fields[4]?.value || "";
-  const details = fields[5]?.value || "";
+    if (!form) {
+        alert("Form not found");
+        return;
+    }
 
-  const message = `*NEW QUOTE REQUEST - BILAWAL TRADERS*
+    const fields = form.querySelectorAll("input, select, textarea");
+
+    const name = fields[0] ? fields[0].value : "";
+    const phone = fields[1] ? fields[1].value : "";
+    const city = fields[2] ? fields[2].value : "";
+    const branch = fields[3] ? fields[3].value : "";
+    const product = fields[4] ? fields[4].value : "";
+    const details = fields[5] ? fields[5].value : "";
+
+    const message =
+`*NEW QUOTE REQUEST - BILAWAL TRADERS*
 
 Name: ${name}
 Phone: ${phone}
@@ -891,16 +898,19 @@ Preferred Branch & Manager: ${branch}
 Product / Solution: ${product}
 Project Details: ${details}`;
 
-  const url = "https://wa.me/923374402188?text=" + encodeURIComponent(message);
+    const url =
+        "https://wa.me/923374402188?text=" +
+        encodeURIComponent(message);
 
-  window.open(url, "_blank");
-                }
-function copyText(text) {
-  navigator.clipboard.writeText(text).then(function() {
-    alert("Copied: " + text);
-  });
+    window.location.href = url;
 }
 
+function copyText(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert("Copied: " + text);
+    });
+}
+</script>
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll("span").forEach(function(span) {
     if (span.textContent.trim() === "Available during business hours") {
